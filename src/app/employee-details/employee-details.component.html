@@ -1,0 +1,39 @@
+<div class="container">
+    <app-employee-form></app-employee-form>
+</div>
+
+<table class="table tabel-hover">
+<thead class="thead-dark">
+    <tr>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>date of Join</th>
+        <th>Designation</th>
+        <th>Age</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let emp of this.empService.listEmployee">
+        <td>{{emp.name}}</td>
+        <td>{{emp.lastName}}</td>
+        <td>{{emp.email}}</td>
+        <td>{{emp.doj | date:'yyyy-MM-dd'}}</td>
+        <td>{{emp.designation}}</td>
+        <td>{{emp.age}}</td>
+        <td>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#" (click)="populateEmployee(emp)">Edit</a>
+                  <a class="dropdown-item" href="#" (click)="delete(emp.id)">Delete</a>
+                </div>
+              </div>
+        </td>
+    </tr>
+</tbody>
+
+</table>
